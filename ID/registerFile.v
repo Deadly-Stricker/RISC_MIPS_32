@@ -1,15 +1,22 @@
 module registerFile(
-    input [4:0] addrss,
+    input [4:0] addrss1,
+    input [4:0] addrss2,
+    input [4:0] addrssw,
     input clk,
-    input read,
+    // input read1,
+    // input read2,
     input write,
     input [31:0] write_material,
-    output reg [31:0] Outp
+    output [31:0] Outp1,
+    output [31:0] Outp2
 );
     reg [31:0] Register_File [31:0];
     always @(posedge clk ) begin
-        if(read)   Outp <= Register_File[addrss];
-        else if(write)  Register_File[addrss]=write_material;    
+        // if(read1)   Outp1 <= Register_File[addrss1];
+        // if(read2)   Outp2 <= Register_File[addrss2];
+        
+        if(write)  Register_File[addrssw]=write_material;    
     end
-
+    assign Outp1 = Register_File[addrss1];
+    assign Outp2 = Register_File[addrss2];
 endmodule
