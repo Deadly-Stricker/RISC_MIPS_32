@@ -1,4 +1,5 @@
 module controlUnit(
+    input clk,
     input [5:0]opcode,
     input [4:0] rt,   // target resiter
     input [4:0] rs,   // source register
@@ -11,5 +12,20 @@ module controlUnit(
     output read,
     output write
 );
+    always @(posedge clk ) begin
+        case(InstructionType)
+            R:  
+                begin
+                    
+                end
+            I:  
+                begin
 
+                end
+            J:
+                begin
+                    
+                end
+        endcase
+    end
 endmodule
