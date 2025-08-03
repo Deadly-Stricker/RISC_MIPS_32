@@ -1,9 +1,9 @@
 module programCounter (
     input clk,
     input stall,
-    input [5:0]Next_pc,
+    input [31:0]Next_pc,
     input jump_cs,
-    output reg [5:0]pc_curr
+    output reg [31:0]pc_curr    // ye chahiye baad ke liye
 );
     //reg pc_past;
     always @(posedge clk)
