@@ -1,7 +1,7 @@
 module IF_stage(
     input clk,
     input stall,
-    input [5:0]Next_pc,
+    input [31:0]Next_pc,
     input jump_cs,
     output reg [31:0]instruction
 );
