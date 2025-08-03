@@ -1,13 +1,14 @@
 module ALU(
     input clk,
-    input [31:0]opcode,
+    input [5:0]opcode,
     input [31:0]SRC,
     input [31:0]TARG,
     input [31:0] immediateVal,
     input [5:0] funct,
     input [4:0] shamt,
     input [31:0] pc,
-    output reg [31:0] Output
+    input [31:0] immed,
+    output reg [31:0] Outp
 );
     always @(posedge clk ) begin
         case(opcode)
@@ -32,8 +33,8 @@ module ALU(
             6'b001100:  Outp <= SRC & immediateVal;
             6'b100011:  Outp <= SRC + immediateVal; // LW
             6'b101011:  Outp <= SRC + immediateVal; // SW
-            6'b000100:  if(SRC==TARG)   Outp <= pc + immediateVal << 2;
-            6'b000101:  if(SRC!=TARG)   Outp <= pc + immediateVal << 2; 
+            6'b000100:  Outp <= SRC==TARG ? pc + immediateVal << 2 : 0;
+            6'b000101:  Outp <= SRC!=TARG ? pc + immediateVal << 2 : 0; 
         endcase
     end
 endmodule
