@@ -30,7 +30,7 @@ module ID_stage(
     output reg [4:0] rd,   // destination rergister
     output reg [4:0] sa,   // kitna shift krna h wo 
     output reg [5:0] funct, // defines which function it implements   // goes as it is to alu
-    output reg [5:0] instr_address,
+    output reg [25:0] instr_address,
     output reg [14:0] Adress_Immediate,
     output reg [1:0] InstructionType
 );
