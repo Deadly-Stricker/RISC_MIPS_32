@@ -1,0 +1,15 @@
+tb.v:5: syntax error
+tb.v:4: error: Invalid module instantiation
+tb.v:7: error: Invalid module instantiation
+tb.v:8: error: Invalid module instantiation
+tb.v:11: error: Invalid module item.
+tb.v:12: syntax error
+tb.v:14: error: Invalid module item.
+tb.v:15: syntax error
+tb.v:15: error: Invalid module item.
+tb.v:16: syntax error
+tb.v:16: error: Invalid module item.
+tb.v:17: syntax error
+tb.v:17: error: Invalid module item.
+tb.v:18: syntax error
+tb.v:19: error: Invalid module item.
