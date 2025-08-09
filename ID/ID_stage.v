@@ -68,7 +68,7 @@ module ID_stage(
                 begin
                     rs<=instruction[25:0];
                     rt<=instruction[20:16];
-                    Adress_Immediate<=[15:0];
+                    Adress_Immediate<=instruction[15:0];
                 end
         endcase
     end
