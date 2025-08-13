@@ -7,6 +7,7 @@ module instructionRegister(
     integer i;
     initial begin
         //read from a mem file
+        $readmemh("/home/saksham/Codes/RISC_MIPS_32/IF/content_IF.mem",Instruction_Register);
     end
     always @(posedge clk ) begin
         instruction = Instruction_Register[pc];
