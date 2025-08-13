@@ -6,8 +6,7 @@ module instructionRegister(
     reg [31:0] Instruction_Register [15:0];
     integer i;
     initial begin
-        for(i=0;i<16;i++)
-            Instruction_Register[i]=i;
+        //read from a mem file
     end
     always @(posedge clk ) begin
         instruction = Instruction_Register[pc];
