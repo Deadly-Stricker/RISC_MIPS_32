@@ -36,7 +36,7 @@ module ID_stage(
 );
     reg [31:0] source_register;   // value that we will get from Register file thorugh ControlUnit
 
-    registerFile RF(.addrss(),.clk(clk),.read(),.write(),.write_material(),.Outp());
+    // registerFile RF(.addrss(),.clk(clk),.read(),.write(),.write_material(),.Outp());
     // reg [1:0] InstructionType;
     parameter R=2'd0, J=2'd1, HALT=2'd2, I=2'd3;
     always @(posedge clk ) begin
