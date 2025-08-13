@@ -12,10 +12,9 @@ module registerFile(
 );
     reg [31:0] Register_File [31:0];
     initial begin
-        for(i=0;i<16;i++)
-            begin
-                Register_File[i]=i;
-            end
+        // read into the register file through mem file
+        $readmemh("ID/content_rf.mem",Register_File);
+
     end
     always @(posedge clk ) begin
         // if(read1)   Outp1 <= Register_File[addrss1];
