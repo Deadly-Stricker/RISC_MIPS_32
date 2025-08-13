@@ -1,0 +1,4 @@
+WARNING: ID/registerFile.v:16: $readmemh: The behaviour for reg[...] mem[N:0]; $readmemh("...", mem); changed in the 1364-2005 standard. To avoid ambiguity, use mem[0:N] or explicit range parameters $readmemh("...", mem, start, stop);. Defaulting to 1364-2005 behavior.
+WARNING: IF/InstructionRegister.v:10: $readmemh: The behaviour for reg[...] mem[N:0]; $readmemh("...", mem); changed in the 1364-2005 standard. To avoid ambiguity, use mem[0:N] or explicit range parameters $readmemh("...", mem, start, stop);. Defaulting to 1364-2005 behavior.
+WARNING: IF/InstructionRegister.v:10: $readmemh(/home/saksham/Codes/RISC_MIPS_32/IF/content_IF.mem): Too many words in the file for the requested range [0:15].
+tb.v:9: $finish called at 200 (1s)
