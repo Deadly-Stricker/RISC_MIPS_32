@@ -62,8 +62,8 @@ module datapath(
         .immed(immed),
         .outpc(outpc)
     );
-    wire [5:0] opcodel3,functl3,pc_vall3,outpcl3;
-    wire [31:0] write_material, Rs,Rt,Rsl3,Rtl3,immedl3; //this too will be used to write back in mem stage later to registers
+    wire [5:0] opcodel3,functl3;
+    wire [31:0] write_material,pc_vall3,outpcl3, Rs,Rt,Rsl3,Rtl3,immedl3; //this too will be used to write back in mem stage later to registers
     wire [4:0] write_address,sal3;           //later in mem stage i will need to use this to write back to registers
     registerFile d(readadd1,readadd2,write_address,clk,write,write_material,Rs,Rt);
 
@@ -71,13 +71,13 @@ module datapath(
     Rego32 B2(clk2,Rt,Rtl3);
     Rego32 B3(clk2,immed,immedl3);
     Rego6 B4(clk2,opcode,opcodel3);
-    Rego32 B4(clk2,pc_val,pc_vall3);
-    Rego32 B4(clk2,outpc,outpcl3);
-    Rego6 B5(clk2,funct,functl3);
-    Rego5 B6(clk2,sa,sal3);
+    Rego32 B5(clk2,pc_val,pc_vall3);
+    Rego32 B6(clk2,outpc,outpcl3);
+    Rego6 B7(clk2,funct,functl3);
+    Rego5 B8(clk2,sa,sal3);
 
     // assign outx = Rs;
-    wire Output_;
+    wire [31:0] Output_;
     ALU e(
         .clk(clk),
         .opcode(opcodel3),
@@ -88,7 +88,7 @@ module datapath(
         .shamt(sal3),
         .pc(pc_vall3),
         .inpc(outpcl3),
-        .outp(Output_)
+        .Outp(Output_)
     );
     assign outx = Output_ ;
 endmodule
