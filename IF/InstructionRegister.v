@@ -1,5 +1,5 @@
 module instructionRegister(
-    input clk,
+    //input clk,
     input [31:0]pc,
     output reg [31:0]instruction
 );
@@ -7,9 +7,9 @@ module instructionRegister(
     integer i;
     initial begin
         //read from a mem file
-        $readmemh("/home/saksham/Codes/RISC_MIPS_32/IF/content_IF.mem",Instruction_Register);
+        $readmemh("IF/content_IF.mem",Instruction_Register);
     end
-    always @(posedge clk ) begin
+    always @(*) begin
         instruction = Instruction_Register[pc];
     end
 endmodule
