@@ -4,11 +4,14 @@ module datapath(
     input clk,
     output [31:0] out1A
 );
-    wire stall,jump_cs;
+    reg stall=0;
+    reg jump_cs=0;
     wire [31:0] instruction,next_pc;
     // reg [31:0] out1A;
     IF_stage a(clk,stall,next_pc,jump_cs,instruction);
+
     Rego A(clk1,instruction,out1A);
+
     wire [5:0] opcode;
     wire [4:0] rt;               // target register
     wire [4:0] rs;               // source register
