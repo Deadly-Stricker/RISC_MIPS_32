@@ -17,9 +17,9 @@ module testb;
         #5  clk3=1;
         #5  clk3=0;
     end
-    always@(out)  
+    always@(posedge clk)  
         begin
-            $display("%d",out);
+            $display("%d : %h ",$time,out);
 
         end
 endmodule
