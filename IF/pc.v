@@ -3,7 +3,9 @@ module programCounter (
     input stall,
     input [31:0]Next_pc,
     input jump_cs,
-    output reg [31:0]pc_curr    // ye chahiye baad ke liye
+    output reg [31:0]pc_curr  // ye chahiye baad ke liye
+    
+
 );
     //reg pc_past;
     initial begin
