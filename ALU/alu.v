@@ -7,7 +7,8 @@ module ALU(
     input [5:0] funct,
     input [4:0] shamt,
     input [31:0] pc,
-    input [31:0] immed,
+    input [31:0] inpc,
+    // input [31:0] immed,
     output reg [31:0] Outp
 );
     always @(posedge clk ) begin
@@ -27,7 +28,7 @@ module ALU(
                 end
             6'b000010:  
                 begin
-                    Outp <= immed << 2;
+                    Outp <= inpc;
                 end 
             6'b001000:  Outp <= SRC + immediateVal;
             6'b001100:  Outp <= SRC & immediateVal;
