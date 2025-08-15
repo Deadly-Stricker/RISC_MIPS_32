@@ -19,7 +19,7 @@ module testb;
     end
     always@(posedge clk)  
         begin
-            $display("%d : %h ",$time,out);
+            $display("%d : %h : %h : %h : %h",$time,UUT.instruction,out,UUT.Rs,UUT.Rt);
 
         end
 endmodule
