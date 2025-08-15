@@ -12,7 +12,7 @@ module controlUnit(
     input [31:0] pc,
     output reg [4:0]readadd1,
     output reg [4:0]readadd2,
-    output reg write,
+    ///output reg write,
     output reg [31:0] immed,
     output reg [31:0] outpc
 );
