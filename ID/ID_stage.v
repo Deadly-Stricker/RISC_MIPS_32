@@ -31,7 +31,7 @@ module ID_stage(
     output reg [4:0] sa,   // kitna shift krna h wo 
     output reg [5:0] funct, // defines which function it implements   // goes as it is to alu
     output reg [25:0] instr_address,
-    output reg [14:0] Adress_Immediate,
+    output reg [15:0] Adress_Immediate,
     output reg [1:0] InstructionType
 );
     reg [31:0] source_register;   // value that we will get from Register file thorugh ControlUnit
@@ -39,7 +39,7 @@ module ID_stage(
     // registerFile RF(.addrss(),.clk(clk),.read(),.write(),.write_material(),.Outp());
     // reg [1:0] InstructionType;
     parameter R=2'd0, J=2'd1, HALT=2'd2, I=2'd3;
-    always @(posedge clk ) begin
+    always @(* ) begin
         opcode = instruction[31:26];
         case(opcode)
             6'b000000:  InstructionType=R;
@@ -66,7 +66,7 @@ module ID_stage(
                 end
             I:  
                 begin
-                    rs<=instruction[25:0];
+                    rs<=instruction[25:21];
                     rt<=instruction[20:16];
                     Adress_Immediate<=instruction[15:0];
                 end
