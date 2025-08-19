@@ -19,7 +19,8 @@ module testb;
     end
     always@(posedge clk)  
         begin
-            $display("%d : %h : %h : %h : %h",$time,UUT.instruction,out,UUT.Rs,UUT.Rt);
+            // $display("%d : %h : %h : %h : %h",$time,UUT.instruction,out,UUT.Rs,UUT.Rt);
+            $display("%d : %h : %h : %h ",$time,UUT.instruction,UUT.immedl3 , UUT.Rsl3, UUT.out);
 
         end
 endmodule
