@@ -7,7 +7,7 @@ module controlUnit(
     input [4:0] sa,   // kitna shift krna h wo //shift amount
     input [5:0] funct, // defines which function it implements
     input [25:0] instr_address,
-    input [14:0] Adress_Immediate,
+    input [15:0] Adress_Immediate,
     input [1:0] InstructionType,
     input [31:0] pc,
     output reg [4:0]readadd1,
@@ -17,7 +17,7 @@ module controlUnit(
     output reg [31:0] outpc
 );
 parameter R=2'd0, J=2'd1, HALT=2'd2, I=2'd3;
-    always @(posedge clk ) begin
+    always @(* ) begin
         case(InstructionType)
             R:  
                 begin
@@ -27,7 +27,8 @@ parameter R=2'd0, J=2'd1, HALT=2'd2, I=2'd3;
             I:  
                 begin
                     readadd1 <= rs;
-                    immed <= {{17{Adress_Immediate[14]}},Adress_Immediate}; // sign extention
+                    immed <= {{17{Adress_Immediate[15]}},Adress_Immediate}; // sign extention
+                    // immed <= 32'b1; // sign extention
                 end
             J:
                 begin
