@@ -80,15 +80,15 @@ module datapath(
     wire [31:0] Output_;
     ALU e(
         .clk(clk),
-        .opcode(opcodel3),
-        .SRC(Rsl3),
-        .TARG(Rtl3),
-        .immediateVal(immedl3),
+        .opcode(opcodel3), // correct 
+        .SRC(Rsl3),    
+        .TARG(Rtl3),   
+        .immediateVal(immedl3), 
         .funct(functl3),
         .shamt(sal3),
         .pc(pc_vall3),
         .inpc(outpcl3),
-        .Outp(Output_)
+        .Outp(outx)
     );
-    assign outx = Output_ ;
+    // assign outx = Output_ ;
 endmodule
