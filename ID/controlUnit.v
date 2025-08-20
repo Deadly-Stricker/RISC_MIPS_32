@@ -13,7 +13,7 @@ module controlUnit(
     output reg [4:0]readadd1,
     output reg [4:0]readadd2,
     ///output reg write,
-    output reg [31:0] immed,
+    output reg [31:0] immed, //sign extended version of adress_immediate
     output reg [31:0] outpc
 );
 parameter R=2'd0, J=2'd1, HALT=2'd2, I=2'd3;
