@@ -1,7 +1,7 @@
 module testb;
     reg clk,clk2,clk3;
     wire [31:0] out;
-    datapath UUT(clk,clk2,clk3,out);
+    datapath UUT(clk,out);
     initial begin
         clk=0;
         clk2=0;
@@ -11,7 +11,7 @@ module testb;
         $finish;
     end
     always  begin
-        #3  clk=~clk;
+        #5  clk=~clk;
     end
     always  begin
         #5  clk2=1;
@@ -22,7 +22,7 @@ module testb;
     always@(posedge clk)  
         begin
             // $display("%d : %h : %h : %h : %h",$time,UUT.instruction,out,UUT.Rs,UUT.Rt);
-            $display("%d :  %h : %d : %h",$time,UUT.instruction, UUT.opcodel4, UUT.write_address, UUT.write_material);
+            $display("%d :  %h : %b : %h : %h : %h",$time,UUT.instruction,UUT.opcode,UUT.rs, UUT.Output_l4, UUT.immedl3);
 
         end
 endmodule
