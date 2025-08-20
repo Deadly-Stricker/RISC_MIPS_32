@@ -13,10 +13,10 @@ module MemoryD(
         $readmemh("MEM/content_mem.mem",Memory_File);
 
     end
-    always @(posedge clk ) begin
+    always @(*) begin
         
-        if(write)  Memory_File[addrssw]=write_material;  
-        if(read)    Outp1 = Memory_File[addrss1];
+        if(write)  Memory_File[addrssw]<=write_material;  
+        if(read)    Outp1 <= Memory_File[addrss1];
     end
     // assign Outp1 = Memory_File[addrss1];
 endmodule
