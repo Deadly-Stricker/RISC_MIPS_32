@@ -20,7 +20,7 @@ module registerFile(
         // if(read1)   Outp1 <= Register_File[addrss1];
         // if(read2)   Outp2 <= Register_File[addrss2];
         
-        if(write)  Register_File[addrssw]=write_material;    
+        if(write==1)  Register_File[addrssw]=write_material;    
     end
     assign Outp1 = Register_File[addrss1];
     assign Outp2 = Register_File[addrss2];
