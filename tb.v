@@ -6,7 +6,7 @@ module testb;
         clk=0;
         clk2=0;
         clk3=0;
-        #200 
+        #250 
         // $writememh("MEM/content_mem.mem",Memory_File);
         $finish;
     end
@@ -22,7 +22,7 @@ module testb;
     always@(posedge clk)  
         begin
             // $display("%d : %h : %h : %h : %h",$time,UUT.instruction,out,UUT.Rs,UUT.Rt);
-            $display("%d :  %h : %b : %h : %h : %h",$time,UUT.instruction,UUT.opcode,UUT.rs, UUT.Output_l4, UUT.immedl3);
+            $display("%d :  %h : %b : %h : %h : %h",$time,UUT.instruction,UUT.opcode,UUT.write_material, UUT.write, UUT.Output_l4);
 
         end
 endmodule
