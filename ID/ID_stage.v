@@ -42,15 +42,15 @@ module ID_stage(
     always @(* ) begin
         opcode = instruction[31:26];
         case(opcode)
-            6'b000000:  InstructionType=R;
-            6'b000010:  InstructionType=J;
-            6'b111111:  InstructionType=HALT;
-            default:    InstructionType=I;
+            6'b000000:  InstructionType<=R;
+            6'b000010:  InstructionType<=J;
+            6'b111111:  InstructionType<=HALT;
+            6'b001000,6'b001100,6'b100011,6'b101011,6'b000100,6'b000101:    InstructionType<=I;
         endcase
-    end
+    // end
 
-    always @(InstructionType) 
-    begin
+    // always @(InstructionType) // merged 2 always to one always to reduce ambiguity
+    // begin
         case(InstructionType)
             R:  
                 begin
