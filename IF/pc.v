@@ -13,11 +13,11 @@ module programCounter (
     end
     always @(posedge clk)
         begin
-            if (stall)  pc_curr=pc_curr;
+            if (stall)  pc_curr<=pc_curr;
             else
                 begin
-                    if(jump_cs) pc_curr=Next_pc;
-                    else    pc_curr=pc_curr+1;
+                    if(jump_cs) pc_curr<=Next_pc;
+                    else    pc_curr<=pc_curr+1;
                 end
             //pc_past=pc_curr;
         end
