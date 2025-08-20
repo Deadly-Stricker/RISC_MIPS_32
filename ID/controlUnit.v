@@ -27,7 +27,8 @@ parameter R=2'd0, J=2'd1, HALT=2'd2, I=2'd3;
             I:  
                 begin
                     readadd1 <= rs;
-                    immed <= {{17{Adress_Immediate[15]}},Adress_Immediate}; // sign extention
+                    readadd2 <= rt;
+                    immed <= {{16{Adress_Immediate[15]}},Adress_Immediate}; // sign extention
                     // immed <= 32'b1; // sign extention
                 end
             J:
