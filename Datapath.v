@@ -63,8 +63,9 @@ module datapath(
         .outpc(outpc)
     );
     wire [5:0] opcodel3,functl3;
+    wire [1:0] InstructionTypel3;
     wire [31:0] write_material,pc_vall3,outpcl3, Rs,Rt,Rsl3,Rtl3,immedl3; //this too will be used to write back in mem stage later to registers
-    wire [4:0] write_address,sal3,rtl3;           //later in mem stage i will need to use this to write back to registers
+    wire [4:0] write_address,sal3,rtl3,rsl3;           //later in mem stage i will need to use this to write back to registers
     registerFile d(readadd1,readadd2,write_address,clk,write,write_material,Rs,Rt);
 
     Rego32 B1(clk,Rs,Rsl3);
@@ -76,6 +77,8 @@ module datapath(
     Rego6 B7(clk,funct,functl3);
     Rego5 B8(clk,sa,sal3);
     Rego5 B9(clk,rt,rtl3);
+    Rego5 B11(clk,rs,rsl3);
+    Rego2 B10(clk,InstructionType,InstructionTypel3);
 
     // assign outx = Rs;
     wire [31:0] Output_;
@@ -93,15 +96,32 @@ module datapath(
     );
     // assign outx = Output_ ;
     wire [5:0] opcodel4;
-    wire [4:0] rtl4;
+    wire [4:0] rtl4,rsl4;
     wire [31:0] Rsl4,Rtl4,Output_l4;
+    wire [1:0] InstructionTypel4;
     Rego6 C1(clk,opcodel3,opcodel4);
     Rego5 C2(clk,rtl3,rtl4);
+    Rego5 C6(clk,rsl3,rsl4);
     // Rego32 C2(clk,Rsl3,Rsl4);
     Rego32 C3(clk,Rtl3 ,Rtl4);
     Rego32 C4(clk,Output_,Output_l4);
+    Rego2 C5(clk,InstructionTypel3,InstructionTypel4);
 
-    MEM_stage f(clk,opcodel4,rtl4,Rtl4,Output_l4,write_material,write,write_address);
+    MEM_stage f(clk,opcodel4,Rtl4,Output_l4,write_material);
     assign outx = Output_l4;
+
+    wire [5:0] opcodel5;
+    wire [4:0] rtl5,rsl5;
+    wire [1:0] InstructionTypel5;
+    wire [31:0] writedata;
+
+    Rego6 D1(clk,opcodel4,opcodel5);
+    Rego5 D2(clk,rtl4,rtl5);
+    Rego5 D3(clk,rsl4,rsl5);
+    Rego2 D4(clk,InstructionTypel4,InstructionTypel5);
+    Rego32 D5(clk,Output_l4,writedata);
+
+    wb_stage g(clk,opcodel5,InstructionTypel5,rsl5,rtl5,writedata,write_address,write,write_material);
+
 
 endmodule
