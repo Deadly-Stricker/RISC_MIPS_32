@@ -5,6 +5,7 @@ module wb_stage(
     input [4:0] rd_add,
     input [4:0] rt_add,
     input [31:0] write_data,
+    input [31:0] write_material,
     output reg [4:0] writing_address,
     output reg write,
     output reg [31:0] write_inp 
@@ -24,6 +25,7 @@ always @(posedge clk ) begin
                     begin
                         writing_address <= rt_add;
                         write <= 1;
+                        write_inp <= write_material;
                     end
             end
 

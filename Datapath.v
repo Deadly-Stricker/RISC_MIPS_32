@@ -107,7 +107,8 @@ module datapath(
     Rego32 C4(clk,Output_,Output_l4);
     Rego2 C5(clk,InstructionTypel3,InstructionTypel4);
 
-    MEM_stage f(clk,opcodel4,Rtl4,Output_l4,write_material);
+    wire [31:0] write_material1;
+    MEM_stage f(clk,opcodel4,Rtl4,Output_l4,write_material1);
     assign outx = Output_l4;
 
     wire [5:0] opcodel5;
@@ -121,7 +122,7 @@ module datapath(
     Rego2 D4(clk,InstructionTypel4,InstructionTypel5);
     Rego32 D5(clk,Output_l4,writedata);
 
-    wb_stage g(clk,opcodel5,InstructionTypel5,rsl5,rtl5,writedata,write_address,write,write_material);
+    wb_stage g(clk,opcodel5,InstructionTypel5,rsl5,rtl5,writedata,write_material1,write_address,write,write_material);
 
 
 endmodule
