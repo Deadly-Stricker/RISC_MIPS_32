@@ -33,7 +33,7 @@ module MEM_stage(
             default: 
                 begin
                     write <= 0;
-                    write_reg <= 0;
+                    // write_reg <= 0;
                     read <= 0;
                     // write = 0;
                 end
