@@ -22,7 +22,7 @@ module testb;
     always@(posedge clk)  
         begin
             // $display("%d : %h : %h : %h : %h",$time,UUT.instruction,out,UUT.Rs,UUT.Rt);
-            $display("%d :  %h : %b : %h : %h : %h",$time,UUT.instruction,UUT.opcode,UUT.write_material, UUT.write, UUT.Output_);
+            $display("%d :  %h : %b : %h : %h : %h",$time,UUT.rd,UUT.rt,UUT.rs, UUT.stall, UUT.pc_val);
 
         end
 endmodule

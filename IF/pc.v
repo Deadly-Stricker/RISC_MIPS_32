@@ -1,6 +1,7 @@
 module programCounter (
     input clk,
     input stall,
+    input [31:0] curr_pc,
     input [31:0]Next_pc,
     input jump_cs,
     output reg [31:0]pc_curr  // ye chahiye baad ke liye

@@ -23,6 +23,7 @@
 
 module ID_stage(
     input clk,
+    input [4:0] pvrd,
     input [31:0]instruction,
     output reg [5:0]opcode,
     output reg [4:0] rt,   // target resiter
@@ -32,9 +33,12 @@ module ID_stage(
     output reg [5:0] funct, // defines which function it implements   // goes as it is to alu
     output reg [25:0] instr_address,
     output reg [15:0] Adress_Immediate,
-    output reg [1:0] InstructionType
+    output reg [1:0] InstructionType,
+    output reg stall,
+    output reg [4:0] prev_regd    // i am declaring it here in effort to use it later to check if the rt or rs in next instruction is rd in previous instruction this way we can do the operand forwarding
 );
     reg [31:0] source_register;   // value that we will get from Register file thorugh ControlUnit
+    
 
     // registerFile RF(.addrss(),.clk(clk),.read(),.write(),.write_material(),.Outp());
     // reg [1:0] InstructionType;
@@ -71,5 +75,11 @@ module ID_stage(
                     Adress_Immediate<=instruction[15:0];
                 end
         endcase
+        if(rt == prev_regd || rs == prev_regd)  stall<=1;
+        else
+            begin
+                stall<=0;
+                prev_regd <= instruction[15:11];
+            end
     end
 endmodule

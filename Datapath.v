@@ -5,7 +5,7 @@ module datapath(
     output [31:0] outx
 );
     wire [31:0]pc_val;
-    reg stall=0;
+    wire stall=0;
     reg jump_cs=0;
     wire [31:0] instruction,next_pc;
     // reg [31:0] out1A;
@@ -19,6 +19,7 @@ module datapath(
     wire [4:0] rt;               // target register
     wire [4:0] rs;               // source register
     wire [4:0] rd;               // destination register
+    wire [4:0] prevrd;               // previous destianation register
     wire [4:0] sa;               // shift amount
     wire [5:0] funct;            // function field (goes to ALU)
     wire [25:0] instr_address;   // jump address
@@ -28,6 +29,7 @@ module datapath(
     // Instantiate ID_stage
     ID_stage b (
         .clk(clk),
+        .pvrd(prevrd),
         .instruction(instructionl1),
         .opcode(opcode),
         .rt(rt),
@@ -37,7 +39,9 @@ module datapath(
         .funct(funct),
         .instr_address(instr_address),
         .Adress_Immediate(Adress_Immediate),
-        .InstructionType(InstructionType)
+        .InstructionType(InstructionType),
+        .prev_regd(prevrd),
+        .stall(stall)
     );
     
 

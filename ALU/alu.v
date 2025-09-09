@@ -11,6 +11,7 @@ module ALU(
     // input [31:0] immed,
     output reg [31:0] Outp
 );
+    reg [31:0] prev_out;
     always @(*) begin
         case(opcode)
             6'b000000:  
