@@ -34,8 +34,8 @@ module ID_stage(
     output reg [25:0] instr_address,
     output reg [15:0] Adress_Immediate,
     output reg [1:0] InstructionType,
-    output reg stall,
-    output reg [4:0] prev_regd    // i am declaring it here in effort to use it later to check if the rt or rs in next instruction is rd in previous instruction this way we can do the operand forwarding
+    output reg stall
+    // output reg [4:0] prev_regd    // i am declaring it here in effort to use it later to check if the rt or rs in next instruction is rd in previous instruction this way we can do the operand forwarding
 );
     reg [31:0] source_register;   // value that we will get from Register file thorugh ControlUnit
     
@@ -44,6 +44,7 @@ module ID_stage(
     // reg [1:0] InstructionType;
     parameter R=2'd0, J=2'd1, HALT=2'd2, I=2'd3;
     always @(* ) begin
+        // stall=1;
         opcode = instruction[31:26];
         case(opcode)
             6'b000000:  InstructionType<=R;
@@ -75,11 +76,13 @@ module ID_stage(
                     Adress_Immediate<=instruction[15:0];
                 end
         endcase
-        if(rt == prev_regd || rs == prev_regd)  stall<=1;
-        else
-            begin
-                stall<=0;
-                prev_regd <= instruction[15:11];
-            end
+        // if(rt == pvrd || rs == pvrd)  stall<=1;
+        // else
+        //     begin
+        //         stall<=0;
+        //         prev_regd <= instruction[15:11];
+        //     end
+        stall = (rt == pvrd || rs == pvrd);
     end
+
 endmodule
