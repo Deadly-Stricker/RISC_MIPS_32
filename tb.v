@@ -3,7 +3,10 @@ module testb;
     wire [31:0] out;
     datapath UUT(clk,out);
     initial begin
-        clk=0;
+         $dumpfile("waveform.vcd");
+    $dumpvars(0, testb);
+
+    clk=0;
         clk2=0;
         clk3=0;
         #250 
@@ -21,8 +24,8 @@ module testb;
     end
     always@(posedge clk)  
         begin
-            // $display("%d : %h : %h : %h : %h",$time,UUT.instruction,out,UUT.Rs,UUT.Rt);
-            $display("%d :  %h : %b : %h : %h : %h",$time,UUT.rd,UUT.rt,UUT.rs, UUT.stall, UUT.pc_val);
+            // $display("%d %d %d %d",UUT.mook,UUT.rt,UUT.rs,UUT.stall);
+            $display("%d :  %d : %d : %d : %d : %d",$time,UUT.stall,UUT.rs,UUT.rd, UUT.Output_, UUT.pc_val);
 
         end
 endmodule
